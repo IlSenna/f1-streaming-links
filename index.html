@@ -10,7 +10,7 @@
       gap: 16px;
       padding: 20px;
       justify-content: center;
-      background-color: #f9f9f9;
+      background-color: transparent; /* Sfondo trasparente */
     }
     .icon {
       width: 40px;
@@ -21,6 +21,7 @@
       height: 40px;
       border-radius: 8px;
       transition: transform 0.2s ease;
+      background-color: transparent;
     }
     @media (hover: hover) {
       .icon a:hover img {
@@ -31,7 +32,7 @@
 </head>
 <body>
   <script>
-    const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTlYdmlKcrDMHTjCGeZyVPg9UfRMh902KqgbwdA-594AY_Y7TbBMYeSyFfibGWNL8ZAXQaVxSGE0cA9/pub?gid=0&single=true&output=csv"; // inserisci qui il link pubblico del CSV di Google Sheets
+    const csvUrl = "PASTE_CSV_LINK_HERE"; // Inserisci il link pubblico del CSV di Google Sheets
 
     fetch(csvUrl)
       .then(response => response.text())
