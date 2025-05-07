@@ -5,19 +5,25 @@
   <title>Link F1 Streaming</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      padding: 20px;
+      gap: 24px;
+      padding: 30px;
       justify-content: center;
+      background-color: #f9f9f9;
     }
     .icon {
-      text-align: center;
+      width: 64px;
+      height: 64px;
     }
     .icon img {
-      width: 48px;
-      height: 48px;
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+    }
+    .icon a:hover img {
+      transform: scale(1.15);
     }
   </style>
 </head>
@@ -39,8 +45,7 @@
             div.className = "icon";
             div.innerHTML = `
               <a href="${url}" target="_blank" title="${name}">
-                <img src="https://www.google.com/s2/favicons?domain=${url}" alt="${name}">
-                <div>${name}</div>
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=${url}" alt="${name}">
               </a>
             `;
             document.body.appendChild(div);
