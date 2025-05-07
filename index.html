@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Link F1 Streaming</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      justify-content: center;
+    }
+    .icon {
+      text-align: center;
+    }
+    .icon img {
+      width: 48px;
+      height: 48px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTlYdmlKcrDMHTjCGeZyVPg9UfRMh902KqgbwdA-594AY_Y7TbBMYeSyFfibGWNL8ZAXQaVxSGE0cA9/pub?gid=0&single=true&output=csv";
+
+    fetch(csvUrl)
+      .then(response => response.text())
+      .then(data => {
+        const lines = data.trim().split("\n").slice(1); // skip header
+        const uniqueLinks = new Set();
+
+        lines.forEach(line => {
+          const [name, url] = line.split(",");
+          if (!uniqueLinks.has(url) && !url.includes("tuttotek")) {
+            uniqueLinks.add(url);
+            const div = document.createElement("div");
+            div.className = "icon";
+            div.innerHTML = `
+              <a href="${url}" target="_blank" title="${name}">
+                <img src="https://www.google.com/s2/favicons?domain=${url}" alt="${name}">
+                <div>${name}</div>
+              </a>
+            `;
+            document.body.appendChild(div);
+          }
+        });
+      });
+  </script>
+</body>
+</html>
